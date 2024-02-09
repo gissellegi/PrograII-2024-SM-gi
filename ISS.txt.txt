@@ -1,0 +1,4 @@
+id_empleado;nombre;apellido;pais;cargo;salario;renta;Iss;AFP;Salario_neto
+2;LAURA          ;ALIGUE BONVEHI      ;7;3;1271;;38.1;;
+5;JULIO          ;ASENSIO VEGA        ;5;2;782;;23.5;;
+8;DAVID-JESE     ;ALTIMIRAS ARMENTEROS;8;2;1075;;32.2;;

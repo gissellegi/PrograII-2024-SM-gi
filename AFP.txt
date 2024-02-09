@@ -1,0 +1,4 @@
+id_empleado;nombre;apellido;pais;cargo;salario;renta;Iss;AFP;Salario_neto
+3;JORDI          ;MAS FRANCH          ;2;3;1258;;;173.5;
+6;ANDREU         ;BIDAULT PEREZ       ;6;3;1344;;;185.4;
+9;ARAN           ;BELMONTE SANCHEZ    ;8;1;1213;;;167.3;

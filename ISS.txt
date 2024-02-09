@@ -1,0 +1,6 @@
+id_empleado;nombre;apellido;pais;cargo;salario;renta;Iss
+2;LAURA          ;ALIGUE BONVEHI      ;7;3;1271;;
+4;DOUNYA         ;ALOY COMPTE         ;10;1;1133;;
+6;ANDREU         ;BIDAULT PEREZ       ;6;3;1344;;
+8;DAVID-JESE     ;ALTIMIRAS ARMENTEROS;8;2;1075;;
+10;GEMMA          ;BAJONA GARCIA       ;7;1;1201;;

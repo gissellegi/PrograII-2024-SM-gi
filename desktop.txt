@@ -1,0 +1,5 @@
+id_empleado;nombre;apellido;pais;cargo;salario;renta;Iss;AFP;Salario_neto
+1;LUIS           ;ALAVEDRA SUNYE      ;10;1;1018;101.8;;;
+4;DOUNYA         ;ALOY COMPTE         ;10;1;1133;113.3;;;
+7;RAMON          ;ALOY CODINACHS      ;8;2;650;65;;;
+10;GEMMA          ;BAJONA GARCIA       ;7;1;1201;120.1;;;
