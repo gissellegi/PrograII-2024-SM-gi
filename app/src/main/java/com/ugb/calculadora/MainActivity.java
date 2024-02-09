@@ -1,74 +1,62 @@
 package com.ugb.calculadora;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tempVal;
-    Button btn;
-    RadioGroup opt;
+        TabHost tbh;
+        TextView tempVal;
+        Spinner spn;
+        Button btn;
+        conversores miObj = new conversores();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        btn = findViewById(R.id.btnCalcular);
+            tbh= findViewById(R.id.tbhConversores);
+            tbh.setup();
 
-        btn.setOnClickListener(new View.OnClickListener() {
+            tbh.addTab(tbh.newTabSpec("LON").setContent(R.id.tab1Longitud).setIndicator("LONGITUD", null));
+            tbh.addTab(tbh.newTabSpec("ALM").setContent(R.id.tab1Longitud).setIndicator("ALMACENAMIENTO", null));
+            tbh.addTab(tbh.newTabSpec("MON").setContent(R.id.tab1Longitud).setIndicator("MONEDAS", null));
+            tbh = findViewById(R.id.tbhConversores);
 
-            public void onClick(View view) {
-                tempVal = findViewById(R.id.txtnum1);
-                double num1 = Double.parseDouble(tempVal.getText().toString());
+            tbh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    spn = findViewById(R.id.spnDeLongitud);
+                    int de = spn.getSelectedItemPosition();
 
-                tempVal = findViewById(R.id.txtnum2);
-                double num2 = Double.parseDouble(tempVal.getText().toString());
+                    spn = findViewById(R.id.spnALongitud);
+                    int a = spn.getSelectedItemPosition();
 
-                double respuesta = 0;
-                opt= findViewById(R.id.optOpciones);
-                if (opt.getCheckedRadioButtonId()==R.id.optSuma){
-                    respuesta=num1+num2;
-                }
-                if (opt.getCheckedRadioButtonId()==R.id.optResta){
-                    respuesta=num1-num2;
-                }
-                if (opt.getCheckedRadioButtonId()==R.id.optMultiplicacion){
-                    respuesta=num1*num2;
-                }
-                if (opt.getCheckedRadioButtonId()==R.id.optDivision){
-                    respuesta=num1/num2;
-                }
+                    tempVal = findViewById(R.id.txtCantidadLongitud);
+                    double cantidad = Double.parseDouble(tempVal.getText().toString());
 
-                if (opt.getCheckedRadioButtonId()==R.id.optFactorial){
-                    double factorial =1;
-                    for (double i=1 ;i <=num1; i++){
-                        factorial*=i;
+                    double resp = miObj.convertir(0, de, a, cantidad);
+                    Toast.makeText(getApplication(),"Respuesta: "+resp, Toast.LENGTH_LONG).show();
                     }
-                    respuesta=factorial;
                 }
-                if (opt.getCheckedRadioButtonId()==R.id.optExponencial){
-                    Math math = null;
-                    respuesta= Math.pow(num1,num2);
-                }
-                if (opt.getCheckedRadioButtonId()==R.id.optPorcentaje){
-                    respuesta=(num1*num2)/100;
-                }
-                if (opt.getCheckedRadioButtonId()==R.id.optRaiz){
-
-                    Math math = null;
-                    respuesta= Math.pow(num1,1/num2);
-
-
-                }
-
-                tempVal= findViewById(R.id.lblrespuesta);
-                tempVal.setText("respuesta:"+respuesta);
-            }
-        });
+            });
+        }
+    }
+    class conversores{
+        double[][] valores= {
+                {1,100,39.3701,3.28084,1.193,1.09361,0.001,0.000621371}
+        };
+    public double convertir (int opcion, int de, int a, double cantidad){
+        return valores[opcion][a]/valores[opcion][de]*cantidad;
     }
 }
+
